@@ -5,93 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sri Datta Electronics Pvt Ltd</title>
     <style>
-        /* General Styles */
+        /* General Styling */
         body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background: radial-gradient(circle, #0b0f29, #000);
+            background: linear-gradient(90deg, #1b1b1b, #3a3a3a);
             color: white;
             text-align: center;
             overflow-x: hidden;
         }
 
-        /* Animated Background */
-        @keyframes movingStars {
-            from { background-position: 0 0; }
-            to { background-position: -1000px 1000px; }
-        }
-        
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.nasa.gov/sites/default/files/thumbnails/image/pia09178.jpg') repeat;
-            opacity: 0.3;
-            animation: movingStars 100s linear infinite;
+        /* Header */
+        header {
+            background: #0047AB;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.5);
         }
 
-        /* Section Styling */
+        /* Sections */
         section {
             padding: 50px;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
         }
 
-        h1 {
-            font-size: 40px;
-            background: linear-gradient(90deg, cyan, magenta);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        h1, h2 {
             text-transform: uppercase;
-        }
-
-        h2 {
-            font-size: 30px;
             color: #ffcc00;
-            text-transform: uppercase;
         }
 
-        /* Rocket Launch Animation */
-        @keyframes launchRocket {
-            0% { transform: translateY(200px); opacity: 1; }
-            100% { transform: translateY(-500px); opacity: 0; }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: auto;
+            color: #ddd;
         }
 
+        /* Rocket Animation */
         .rocket {
             width: 150px;
-            animation: launchRocket 5s ease-in-out infinite;
+            animation: launchRocket 5s ease-in-out infinite alternate;
         }
 
-        /* 3D Product Showcase */
+        @keyframes launchRocket {
+            0% { transform: translateY(50px); opacity: 1; }
+            100% { transform: translateY(-50px); opacity: 1; }
+        }
+
+        /* Product Showcase */
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
         .product {
             width: 300px;
             padding: 20px;
-            margin: 20px;
-            background: rgba(255, 255, 255, 0.1);
+            background: #222;
             border-radius: 10px;
             transition: transform 0.5s, box-shadow 0.5s;
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 10px;
         }
 
         .product:hover {
             transform: scale(1.1);
-            box-shadow: 0 0 20px cyan;
+            box-shadow: 0px 0px 20px cyan;
         }
 
         /* Fireworks Animation */
-        @keyframes fireworks {
-            0% { opacity: 0; transform: scale(0.5); }
-            50% { opacity: 1; transform: scale(1.2); }
-            100% { opacity: 0; transform: scale(1.5); }
-        }
-
         .fireworks {
             position: absolute;
             width: 10px;
@@ -101,33 +94,71 @@
             opacity: 0;
             animation: fireworks 1.5s linear infinite;
         }
+
+        @keyframes fireworks {
+            0% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0; transform: scale(1.5); }
+        }
+
+        /* Contact Section */
+        #contact {
+            background: #0047AB;
+            padding: 50px;
+        }
+
+        #contact p {
+            font-size: 20px;
+            color: white;
+        }
     </style>
 </head>
 <body>
 
-    <h1>🚀 Welcome to Sri Datta Electronics Pvt Ltd 🚀</h1>
+    <header>
+        🚀 Sri Datta Electronics Pvt Ltd - Advanced Technology Solutions
+    </header>
 
     <section>
-        <h2>🚀 Realistic Rocket Launch Animation</h2>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/SpaceX_Falcon_9_Demo-2_Launch.jpg" class="rocket" alt="Rocket">
+        <h1>Welcome to Sri Datta Electronics Pvt Ltd</h1>
+        <p>A leading technology-driven company with **14 years of experience** in serving **Defense & Government organizations** with cutting-edge solutions.</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/SpaceX_Falcon_9_Demo-2_Launch.jpg" class="rocket" alt="Rocket Launch">
     </section>
 
     <section>
-        <h2>📡 Our Advanced Telemetry Tracking System</h2>
-        <div class="product">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Satcom_Antenna.jpg" width="100%" alt="Telemetry System">
-            <p><strong>Portable Integrated Telemetry Tracking System</strong></p>
-            <p>Equipped with a Dual Channel Receiver, Bit Synchronizer, Frame Synchronizer, and Decommutator.</p>
+        <h2>📡 Advanced Telemetry Tracking Systems</h2>
+        <p>Our **Portable Integrated Telemetry Tracking System** is engineered with a **dual-channel receiver, bit synchronizer, frame synchronizer, and decommutator** with diversity combiner.</p>
+        <div class="product-container">
+            <div class="product">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Satcom_Antenna.jpg" alt="Telemetry System">
+                <p><strong>Portable Telemetry Tracking System</strong></p>
+            </div>
+            <div class="product">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Satellite_tracking_station.jpg" alt="Satellite Tracking">
+                <p><strong>High-Precision Satellite Tracking</strong></p>
+            </div>
         </div>
     </section>
 
     <section>
         <h2>🛠️ Rugged Computers & SDR Systems</h2>
-        <div class="product">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Rugged_Laptop.jpg" width="100%" alt="Rugged Computer">
-            <p><strong>Rugged Computers & Custom Systems</strong></p>
-            <p>Designed for extreme environments with high durability and performance.</p>
+        <p>We provide **ruggedized computing solutions** for extreme conditions and **SDR (Software-Defined Radio) systems** that support secure **IP Mesh MANET communications.**</p>
+        <div class="product-container">
+            <div class="product">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Rugged_Laptop.jpg" alt="Rugged Computer">
+                <p><strong>Military-Grade Rugged Computers</strong></p>
+            </div>
+            <div class="product">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Software_Defined_Radio.jpg" alt="SDR System">
+                <p><strong>Advanced SDR Communication Systems</strong></p>
+            </div>
         </div>
+    </section>
+
+    <section>
+        <h2>⚙️ Specifications</h2>
+        <p>We support multiple telemetry standards including **S, L, UL, C & IF-70MHz frequencies** with advanced demodulation techniques such as **MS-PCM/FM, QPSK, SOQPSK, and UQPSK.**</p>
+        <p>Our systems are equipped with **256-bit encryption**, support **60-node IP MESH networking**, and provide **high-speed data streaming at up to 54Mbps.**</p>
     </section>
 
     <section id="contact">
