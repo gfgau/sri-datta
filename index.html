@@ -4,124 +4,186 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sri Datta Electronics</title>
-    <link rel="stylesheet" href="styles.css">
-<style>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            scroll-behavior: smooth;
+        }
 
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
+        /* Navigation Bar */
+        nav {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
 
-header {
-    background: linear-gradient(90deg, #ff7f00, #ffffff, #008000);
-    color: white;
-    padding: 20px;
-}
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
 
-h1 {
-    margin: 0;
-}
+        nav a:hover {
+            background: #00aaff;
+            border-radius: 5px;
+        }
 
-section {
-    background: white;
-    padding: 20px;
-    margin: 20px auto;
-    width: 80%;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+        /* Sections */
+        section {
+            padding: 80px 10%;
+            transition: 0.5s;
+        }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-}
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
 
-.rocket-container {
-    position: fixed;
-    bottom: -100px;
-    left: 50%;
-    width: 100%;
-    height: 200px;
-    transform: translateX(-50%);
-}
+        h1, h2 {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
 
-.rocket {
-    width: 50px;
-    height: 100px;
-    background: url('rocket.png') no-repeat center;
-    background-size: contain;
-    position: absolute;
-}
+        .info p, .contact p, .directors ul {
+            font-size: 18px;
+            line-height: 1.6;
+        }
 
-.left {
-    left: 20%;
-    animation: launch 4s ease-out infinite;
-}
+        /* Rocket Animation */
+        .rocket-container {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            width: 100%;
+            height: 200px;
+            transform: translateX(-50%);
+        }
 
-.right {
-    right: 20%;
-    animation: launch 4s ease-out infinite;
-}
+        .rocket {
+            width: 60px;
+            height: 120px;
+            position: absolute;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/e/e7/SpaceX_Falcon_9_v1.1.svg') no-repeat center;
+            background-size: contain;
+        }
 
-@keyframes launch {
-    0% { transform: translateY(0); opacity: 1; }
-    50% { transform: translateY(-300px); opacity: 0.8; }
-    100% { transform: translateY(-600px); opacity: 0; }
-}
+        .rocket.left { left: 10%; animation: launch 5s ease-in-out infinite; }
+        .rocket.right { right: 10%; animation: launch 5s ease-in-out infinite; }
 
+        @keyframes launch {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(-300px); opacity: 0.8; }
+            100% { transform: translateY(-600px); opacity: 0; }
+        }
 
-</style>
+        /* Scroll Reveal Animation */
+        .hidden {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-in-out;
+        }
+
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Sri Datta Electronics Pvt Ltd</h1>
-        <p>Incorporated on 10 Dec 2021 | CIN: U31909TG2021PTC152171</p>
-    </header>
 
-    <section class="info">
-        <h2>Company Information</h2>
-        <p><strong>Corporate Identification Number (CIN):</strong> U31909TG2021PTC152171</p>
-        <p><strong>Company Type:</strong> Private | Non-Government</p>
-        <p><strong>Authorized Share Capital:</strong> ₹1,000,000</p>
-        <p><strong>Paid-up Capital:</strong> ₹180,000</p>
-        <p><strong>NIC Code:</strong> 3190 | <strong>Industry:</strong> Manufacture of electrical equipment</p>
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#about">About</a>
+        <a href="#info">Company Info</a>
+        <a href="#directors">Directors</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about" class="hidden">
+        <div class="container">
+            <h1>Sri Datta Electronics Pvt Ltd</h1>
+            <p><strong>Incorporated on:</strong> 10 Dec 2021</p>
+            <p><strong>CIN:</strong> U31909TG2021PTC152171</p>
+            <p><strong>Status:</strong> Active</p>
+        </div>
     </section>
 
-    <section class="directors">
-        <h2>Directors</h2>
-        <ul>
-            <li>Laxmi Narasimha Sastry Hari</li>
-            <li>Swarna Latha Kondru</li>
-            <li>Siri Parvathi Hari</li>
-        </ul>
+    <!-- Company Information -->
+    <section id="info" class="hidden">
+        <div class="container">
+            <h2>Company Information</h2>
+            <p><strong>Corporate Identification Number (CIN):</strong> U31909TG2021PTC152171</p>
+            <p><strong>Company Type:</strong> Private | Non-Government</p>
+            <p><strong>Authorized Share Capital:</strong> ₹1,000,000</p>
+            <p><strong>Paid-up Capital:</strong> ₹180,000</p>
+            <p><strong>NIC Code:</strong> 3190 | <strong>Industry:</strong> Manufacture of electrical equipment</p>
+        </div>
     </section>
 
-    <section class="contact">
-        <h2>Contact Details</h2>
-        <p><strong>Email:</strong> <a href="mailto:hlnsastry@sridattaelectronics.com">hlnsastry@sridattaelectronics.com</a></p>
-        <p><strong>Address:</strong> Plot No. 5/1 & 88, Flat No. 201, Chaitanya Chamber, Chaitanyapuri, Hyderabad, Telangana, India - 500060</p>
+    <!-- Directors Section -->
+    <section id="directors" class="hidden">
+        <div class="container">
+            <h2>Directors</h2>
+            <ul>
+                <li>Laxmi Narasimha Sastry Hari</li>
+                <li>Swarna Latha Kondru</li>
+                <li>Siri Parvathi Hari</li>
+            </ul>
+        </div>
     </section>
 
+    <!-- Contact Section -->
+    <section id="contact" class="hidden">
+        <div class="container">
+            <h2>Contact Details</h2>
+            <p><strong>Email:</strong> <a href="mailto:hlnsastry@sridattaelectronics.com">hlnsastry@sridattaelectronics.com</a></p>
+            <p><strong>Address:</strong> Plot No. 5/1 & 88, Flat No. 201, Chaitanya Chamber, Chaitanyapuri, Hyderabad, Telangana, India - 500060</p>
+        </div>
+    </section>
+
+    <!-- Rockets Animation -->
     <div class="rocket-container">
         <div class="rocket left"></div>
         <div class="rocket right"></div>
     </div>
 
+    <!-- JavaScript -->
     <script>
-document.addEventListener("DOMContentLoaded", function() {
-    const rockets = document.querySelectorAll(".rocket");
-    
-    rockets.forEach((rocket, index) => {
-        setTimeout(() => {
-            rocket.style.animation = "launch 4s ease-out infinite";
-        }, index * 1000);
-    });
-});
+        // Scroll Reveal Animation
+        const sections = document.querySelectorAll(".hidden");
 
+        const reveal = () => {
+            sections.forEach((section) => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop < window.innerHeight - 100) {
+                    section.classList.add("show");
+                }
+            });
+        };
 
-</script>
+        window.addEventListener("scroll", reveal);
+        reveal();
+    </script>
+
 </body>
 </html>
