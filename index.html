@@ -5,218 +5,216 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sri Datta Electronics</title>
     <style>
+        /* General Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
         }
         body {
-            background-color: #f4f4f4;
+            background: #f8f9fa;
+            color: #333;
             overflow-x: hidden;
         }
-        /* Navbar */
+        
+        /* Navigation Bar */
         .navbar {
-            background: #2c3e50;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             position: fixed;
             width: 100%;
             top: 0;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             z-index: 1000;
-            transition: 0.4s;
         }
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 15px;
-            font-size: 18px;
-        }
-        .menu-toggle {
-            display: none;
+        .logo {
             font-size: 24px;
+            font-weight: bold;
             color: white;
-            cursor: pointer;
         }
         .nav-links {
             display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            transition: 0.3s;
         }
         .nav-links a:hover {
-            background: #34495e;
+            background: #ff7f00;
             border-radius: 5px;
         }
-
-        /* Mobile Navbar */
+        
+        /* Mobile Menu */
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+        }
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                background: #2c3e50;
-                top: 50px;
+                top: 60px;
                 right: 0;
-                width: 100%;
-                text-align: center;
+                background: black;
+                width: 200px;
+                padding: 10px;
             }
-            .nav-links a {
-                padding: 15px;
+            .nav-links.active {
+                display: flex;
             }
-            .menu-toggle {
+            .menu-icon {
                 display: block;
             }
         }
-
+        
         /* Hero Section */
         .hero {
-            background: url('https://source.unsplash.com/1600x900/?electronics') no-repeat center center/cover;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             text-align: center;
+            padding: 150px 20px;
+            background: linear-gradient(135deg, #2196f3, #e91e63);
             color: white;
-            font-size: 28px;
-            font-weight: bold;
-            animation: fadeIn 2s ease-in-out;
+        }
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
         }
         
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        /* Content Sections */
+        .container {
+            padding: 50px 20px;
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
         }
         
         /* Rocket Animation */
-        .rocket-container {
-            position: fixed;
-            bottom: -100px;
-            width: 100%;
-            height: 100vh;
-        }
         .rocket {
-            position: absolute;
-            width: 80px;
-            animation: launch 5s infinite ease-in-out;
+            position: fixed;
+            width: 50px;
+            bottom: -100px;
+            animation: launch 5s ease-in-out infinite;
         }
-        .rocket-left {
-            left: 5%;
-        }
-        .rocket-right {
-            right: 5%;
-        }
+        .rocket.left { left: 10%; animation-delay: 1s; }
+        .rocket.right { right: 10%; animation-delay: 2s; }
         @keyframes launch {
-            0% { bottom: -100px; transform: scale(0.5); }
-            50% { bottom: 50%; transform: scale(1); }
-            100% { bottom: 100%; opacity: 0; }
+            0% { bottom: -100px; opacity: 1; }
+            100% { bottom: 100vh; opacity: 0; }
         }
-
+        
         /* Smoke Animation */
         .smoke {
             position: absolute;
             width: 10px;
-            height: 50px;
+            height: 100px;
             background: white;
-            bottom: 0;
-            animation: smoke-rise 3s infinite;
+            animation: smokeRise 5s linear infinite;
         }
-        .smoke1 { left: 50px; background: orange; }
-        .smoke2 { left: 70px; background: white; }
-        .smoke3 { left: 90px; background: green; }
-        @keyframes smoke-rise {
-            0% { opacity: 1; transform: translateY(0); }
-            100% { opacity: 0; transform: translateY(-100px); }
+        .smoke1 { left: 12%; animation-delay: 1s; }
+        .smoke2 { right: 12%; animation-delay: 2s; }
+        @keyframes smokeRise {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(5); }
         }
-
-        /* Product Section */
-        .products {
-            padding: 50px;
-            text-align: center;
-            background: white;
-        }
-        .product-slider {
+        
+        /* Image Slider */
+        .slider {
             display: flex;
-            overflow: hidden;
-            width: 80%;
-            margin: auto;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px;
         }
-        .product {
-            min-width: 100%;
-            transition: transform 0.5s ease-in-out;
-        }
-        img {
-            width: 100%;
-            height: auto;
+        .slider img {
+            width: 300px;
+            height: 200px;
             border-radius: 10px;
+            transition: transform 0.3s;
         }
-
+        .slider img:hover {
+            transform: scale(1.1);
+        }
+        
         /* Footer */
         .footer {
-            background: #2c3e50;
-            color: white;
             text-align: center;
             padding: 20px;
-            margin-top: 30px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
         }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
+
+    <!-- Navigation Bar -->
     <div class="navbar">
-        <a href="#">Sri Datta Electronics</a>
-        <span class="menu-toggle">&#9776;</span>
+        <div class="logo">Sri Datta Electronics</div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
         <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Products</a>
-            <a href="#">Contact</a>
+            <a href="#about">About</a>
+            <a href="#products">Products</a>
+            <a href="#contact">Contact</a>
         </div>
     </div>
 
     <!-- Hero Section -->
     <div class="hero">
-        Welcome to Sri Datta Electronics - Innovation in Electronics
+        <h1>Welcome to Sri Datta Electronics</h1>
+        <p>Innovating the Future of Electronics</p>
     </div>
 
-    <!-- Rocket Animations -->
-    <div class="rocket-container">
-        <img src="https://www.svgrepo.com/show/503258/rocket.svg" class="rocket rocket-left">
-        <img src="https://www.svgrepo.com/show/503258/rocket.svg" class="rocket rocket-right">
-        <div class="smoke smoke1"></div>
-        <div class="smoke smoke2"></div>
-        <div class="smoke smoke3"></div>
+    <!-- Content Sections -->
+    <div class="container" id="about">
+        <h2>About Us</h2>
+        <p>Sri Datta Electronics Pvt Ltd specializes in high-tech electronics for defense, government, and industrial applications.</p>
     </div>
 
-    <!-- Products Section -->
-    <div class="products">
+    <div class="container" id="products">
         <h2>Our Products</h2>
-        <div class="product-slider">
-            <div class="product"><img src="https://source.unsplash.com/400x300/?circuit"></div>
-            <div class="product"><img src="https://source.unsplash.com/400x300/?chip"></div>
-            <div class="product"><img src="https://source.unsplash.com/400x300/?electronic"></div>
+        <div class="slider">
+            <img src="https://via.placeholder.com/300x200" alt="Product 1">
+            <img src="https://via.placeholder.com/300x200" alt="Product 2">
+            <img src="https://via.placeholder.com/300x200" alt="Product 3">
         </div>
+    </div>
+
+    <div class="container" id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: <a href="mailto:sales@sridattaelectronics.com">sales@sridattaelectronics.com</a></p>
+        <p>Phone: +91-9492430198</p>
     </div>
 
     <!-- Footer -->
     <div class="footer">
-        &copy; 2025 Sri Datta Electronics | All Rights Reserved
+        <p>&copy; 2025 Sri Datta Electronics. All Rights Reserved.</p>
     </div>
 
-    <script>
-        // Mobile Navbar Toggle
-        document.querySelector(".menu-toggle").addEventListener("click", function() {
-            document.querySelector(".nav-links").classList.toggle("show");
-        });
+    <!-- Rocket Animation -->
+    <img src="https://drive.google.com/uc?export=view&id=1TW1j-A9eJmh-_jXvU7XU6ijP8Z5BVsUc" class="rocket left">
+    <img src="https://drive.google.com/uc?export=view&id=1TW1j-A9eJmh-_jXvU7XU6ijP8Z5BVsUc" class="rocket right">
+    <div class="smoke smoke1"></div>
+    <div class="smoke smoke2"></div>
 
-        // Product Slider
-        let index = 0;
-        function slideProducts() {
-            const slider = document.querySelector('.product-slider');
-            index = (index + 1) % 3;
-            slider.style.transform = `translateX(-${index * 100}%)`;
+    <!-- JavaScript -->
+    <script>
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
         }
-        setInterval(slideProducts, 3000);
     </script>
+
 </body>
 </html>
