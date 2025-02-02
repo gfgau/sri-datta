@@ -5,184 +5,213 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sri Datta Electronics</title>
     <style>
-        /* General Styles */
-        body {
-            font-family: 'Arial', sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
             color: #333;
-            scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         /* Navigation Bar */
-        nav {
-            background: rgba(0, 0, 0, 0.9);
-            padding: 15px;
+        .navbar {
             position: fixed;
             width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1000;
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 15px 20px;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
+            z-index: 1000;
         }
 
-        nav a {
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
             color: white;
             text-decoration: none;
-            font-size: 18px;
-            padding: 10px 20px;
-            transition: all 0.3s ease;
+            transition: 0.3s;
         }
 
-        nav a:hover {
-            background: #00aaff;
-            border-radius: 5px;
+        .nav-links a:hover {
+            color: #ffa500;
         }
 
-        /* Sections */
-        section {
-            padding: 80px 10%;
-            transition: 0.5s;
+        /* Mobile Nav */
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
         }
 
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background: black;
+                width: 200px;
+                padding: 10px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-icon {
+                display: block;
+            }
         }
 
-        h1, h2 {
+        /* Hero Section */
+        .hero {
             text-align: center;
-            font-weight: bold;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #2196f3, #e91e63);
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 40px;
             margin-bottom: 10px;
         }
 
-        .info p, .contact p, .directors ul {
+        .hero p {
             font-size: 18px;
-            line-height: 1.6;
+        }
+
+        /* Content Section */
+        .container {
+            padding: 50px 20px;
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
         }
 
         /* Rocket Animation */
-        .rocket-container {
-            position: fixed;
-            bottom: -100px;
-            left: 50%;
-            width: 100%;
-            height: 200px;
-            transform: translateX(-50%);
-        }
-
         .rocket {
-            width: 60px;
-            height: 120px;
             position: absolute;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/e/e7/SpaceX_Falcon_9_v1.1.svg') no-repeat center;
-            background-size: contain;
+            width: 50px;
+            height: 100px;
+            bottom: -100px;
+            animation: launch 5s linear infinite;
         }
 
-        .rocket.left { left: 10%; animation: launch 5s ease-in-out infinite; }
-        .rocket.right { right: 10%; animation: launch 5s ease-in-out infinite; }
+        .rocket1 {
+            left: 10%;
+            animation-delay: 1s;
+        }
+
+        .rocket2 {
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .smoke {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: white;
+            animation: smoke 3s linear infinite;
+        }
 
         @keyframes launch {
-            0% { transform: translateY(0); opacity: 1; }
-            50% { transform: translateY(-300px); opacity: 0.8; }
-            100% { transform: translateY(-600px); opacity: 0; }
+            0% { bottom: -100px; }
+            100% { bottom: 100%; }
         }
 
-        /* Scroll Reveal Animation */
-        .hidden {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease-in-out;
-        }
-
-        .show {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes smoke {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(5); }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation Bar -->
-    <nav>
-        <a href="#about">About</a>
-        <a href="#info">Company Info</a>
-        <a href="#directors">Directors</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <!-- About Section -->
-    <section id="about" class="hidden">
-        <div class="container">
-            <h1>Sri Datta Electronics Pvt Ltd</h1>
-            <p><strong>Incorporated on:</strong> 10 Dec 2021</p>
-            <p><strong>CIN:</strong> U31909TG2021PTC152171</p>
-            <p><strong>Status:</strong> Active</p>
+    <!-- Navigation -->
+    <div class="navbar">
+        <div class="logo">Sri Datta Electronics</div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
         </div>
-    </section>
-
-    <!-- Company Information -->
-    <section id="info" class="hidden">
-        <div class="container">
-            <h2>Company Information</h2>
-            <p><strong>Corporate Identification Number (CIN):</strong> U31909TG2021PTC152171</p>
-            <p><strong>Company Type:</strong> Private | Non-Government</p>
-            <p><strong>Authorized Share Capital:</strong> ₹1,000,000</p>
-            <p><strong>Paid-up Capital:</strong> ₹180,000</p>
-            <p><strong>NIC Code:</strong> 3190 | <strong>Industry:</strong> Manufacture of electrical equipment</p>
-        </div>
-    </section>
-
-    <!-- Directors Section -->
-    <section id="directors" class="hidden">
-        <div class="container">
-            <h2>Directors</h2>
-            <ul>
-                <li>Laxmi Narasimha Sastry Hari</li>
-                <li>Swarna Latha Kondru</li>
-                <li>Siri Parvathi Hari</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="hidden">
-        <div class="container">
-            <h2>Contact Details</h2>
-            <p><strong>Email:</strong> <a href="mailto:hlnsastry@sridattaelectronics.com">hlnsastry@sridattaelectronics.com</a></p>
-            <p><strong>Address:</strong> Plot No. 5/1 & 88, Flat No. 201, Chaitanya Chamber, Chaitanyapuri, Hyderabad, Telangana, India - 500060</p>
-        </div>
-    </section>
-
-    <!-- Rockets Animation -->
-    <div class="rocket-container">
-        <div class="rocket left"></div>
-        <div class="rocket right"></div>
     </div>
 
-    <!-- JavaScript -->
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Welcome to Sri Datta Electronics</h1>
+        <p>Innovating the Future of Electronics</p>
+    </div>
+
+    <!-- Content Section -->
+    <div class="container">
+        <h2>About Us</h2>
+        <p>SRI DATTA ELECTRONICS PRIVATE LIMITED (CIN: U31909TG2021PTC152171) is a Private company incorporated on 10 Dec 2021.</p>
+        <p>It is classified as a Non-government company and is registered at ROC Hyderabad. Its authorized share capital is Rs. 10,00,000.00 and paid-up capital is Rs. 1,80,000.00.</p>
+        <p>The company is involved in the **manufacture of electrical equipment** as per **NIC code 3190**.</p>
+        <p><strong>Directors:</strong> LAXMI NARASIMHA SASTRY HARI, SWARNA LATHA KONDRU, and SIRI PARVATHI HARI.</p>
+        <p>Email: <a href="mailto:hlnsastry@sridattaelectronics.com">hlnsastry@sridattaelectronics.com</a></p>
+        <p>Address: PLOT NO. 5/1 & 88, Flat No. 201, Chaitanya Chamber, Chaitanyapuri, Hyderabad, Telangana, India - 500060.</p>
+    </div>
+
+    <!-- Rocket Animation -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Rocket_clipart.svg" class="rocket rocket1">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Rocket_clipart.svg" class="rocket rocket2">
+
     <script>
-        // Scroll Reveal Animation
-        const sections = document.querySelectorAll(".hidden");
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
 
-        const reveal = () => {
-            sections.forEach((section) => {
-                const sectionTop = section.getBoundingClientRect().top;
-                if (sectionTop < window.innerHeight - 100) {
-                    section.classList.add("show");
-                }
-            });
-        };
+        // Smoke Animation
+        function createSmoke(color, left) {
+            let smoke = document.createElement("div");
+            smoke.className = "smoke";
+            smoke.style.backgroundColor = color;
+            smoke.style.left = left + "%";
+            smoke.style.bottom = "0px";
+            document.body.appendChild(smoke);
 
-        window.addEventListener("scroll", reveal);
-        reveal();
+            setTimeout(() => {
+                document.body.removeChild(smoke);
+            }, 3000);
+        }
+
+        setInterval(() => {
+            createSmoke("orange", 12);
+            createSmoke("white", 15);
+            createSmoke("green", 18);
+            createSmoke("orange", 82);
+            createSmoke("white", 85);
+            createSmoke("green", 88);
+        }, 500);
     </script>
 
 </body>
