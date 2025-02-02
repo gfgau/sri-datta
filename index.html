@@ -10,13 +10,13 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background: black;
+            background: radial-gradient(circle, #0b0f29, #000);
             color: white;
-            overflow-x: hidden;
             text-align: center;
+            overflow-x: hidden;
         }
 
-        /* Background Animation */
+        /* Animated Background */
         @keyframes movingStars {
             from { background-position: 0 0; }
             to { background-position: -1000px 1000px; }
@@ -34,51 +34,7 @@
             animation: movingStars 100s linear infinite;
         }
 
-        /* Rocket Launch Animation */
-        @keyframes launchRocket {
-            0% { transform: translateY(100px); opacity: 1; }
-            100% { transform: translateY(-500px); opacity: 0; }
-        }
-
-        .rocket {
-            width: 100px;
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: launchRocket 5s ease-in-out infinite;
-        }
-
-        /* Floating Tooltips */
-        .tooltip {
-            position: relative;
-            display: inline-block;
-            cursor: pointer;
-        }
-
-        .tooltip .tooltip-text {
-            visibility: hidden;
-            width: 200px;
-            background-color: rgba(255, 255, 255, 0.2);
-            color: #fff;
-            text-align: center;
-            border-radius: 5px;
-            padding: 5px;
-            position: absolute;
-            z-index: 1;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .tooltip:hover .tooltip-text {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        /* Section Styles */
+        /* Section Styling */
         section {
             padding: 50px;
             min-height: 100vh;
@@ -86,9 +42,50 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            position: relative;
         }
 
-        /* Contact Section Fireworks */
+        h1 {
+            font-size: 40px;
+            background: linear-gradient(90deg, cyan, magenta);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 30px;
+            color: #ffcc00;
+            text-transform: uppercase;
+        }
+
+        /* Rocket Launch Animation */
+        @keyframes launchRocket {
+            0% { transform: translateY(200px); opacity: 1; }
+            100% { transform: translateY(-500px); opacity: 0; }
+        }
+
+        .rocket {
+            width: 150px;
+            animation: launchRocket 5s ease-in-out infinite;
+        }
+
+        /* 3D Product Showcase */
+        .product {
+            width: 300px;
+            padding: 20px;
+            margin: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: transform 0.5s, box-shadow 0.5s;
+        }
+
+        .product:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px cyan;
+        }
+
+        /* Fireworks Animation */
         @keyframes fireworks {
             0% { opacity: 0; transform: scale(0.5); }
             50% { opacity: 1; transform: scale(1.2); }
@@ -108,18 +105,28 @@
 </head>
 <body>
 
-    <h1>Welcome to Sri Datta Electronics Pvt Ltd</h1>
+    <h1>🚀 Welcome to Sri Datta Electronics Pvt Ltd 🚀</h1>
 
     <section>
-        <h2>🚀 Rocket Launch Animation</h2>
+        <h2>🚀 Realistic Rocket Launch Animation</h2>
         <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/SpaceX_Falcon_9_Demo-2_Launch.jpg" class="rocket" alt="Rocket">
     </section>
 
     <section>
-        <h2>📡 3D Product Showcase</h2>
-        <div class="tooltip">
-            <strong>Portable Integrated Telemetry Tracking System</strong>
-            <span class="tooltip-text">Dual Channel Receiver, Bit Synchronizer, Frame Synchronizer, Decommutator.</span>
+        <h2>📡 Our Advanced Telemetry Tracking System</h2>
+        <div class="product">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Satcom_Antenna.jpg" width="100%" alt="Telemetry System">
+            <p><strong>Portable Integrated Telemetry Tracking System</strong></p>
+            <p>Equipped with a Dual Channel Receiver, Bit Synchronizer, Frame Synchronizer, and Decommutator.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>🛠️ Rugged Computers & SDR Systems</h2>
+        <div class="product">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Rugged_Laptop.jpg" width="100%" alt="Rugged Computer">
+            <p><strong>Rugged Computers & Custom Systems</strong></p>
+            <p>Designed for extreme environments with high durability and performance.</p>
         </div>
     </section>
 
