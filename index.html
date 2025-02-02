@@ -5,213 +5,185 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sri Datta Electronics</title>
     <style>
-        * {
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background-color: #f5f5f5;
-            color: #333;
+            background: linear-gradient(45deg, #001F3F, #008080);
+            color: white;
             overflow-x: hidden;
         }
-
         /* Navigation Bar */
         .navbar {
-            position: fixed;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            color: white;
-            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            width: 100%;
+            top: 0;
             z-index: 1000;
         }
-
-        .logo {
+        .navbar h1 {
             font-size: 24px;
-            font-weight: bold;
+            margin: 0;
         }
-
-        .nav-links {
+        .menu {
             display: flex;
-            gap: 20px;
+            gap: 15px;
         }
-
-        .nav-links a {
-            color: white;
+        .menu a {
             text-decoration: none;
-            transition: 0.3s;
+            color: white;
+            font-size: 18px;
+            transition: color 0.3s ease-in-out;
         }
-
-        .nav-links a:hover {
-            color: #ffa500;
+        .menu a:hover {
+            color: #00ffcc;
         }
-
-        /* Mobile Nav */
-        .menu-icon {
+        /* Mobile Menu */
+        .menu-btn {
             display: none;
             font-size: 24px;
             cursor: pointer;
         }
-
         @media (max-width: 768px) {
-            .nav-links {
+            .menu {
                 display: none;
                 flex-direction: column;
-                position: absolute;
-                top: 60px;
-                right: 0;
                 background: black;
-                width: 200px;
-                padding: 10px;
+                position: absolute;
+                top: 50px;
+                right: 0;
+                width: 50%;
+                padding: 20px;
             }
-
-            .nav-links.active {
+            .menu.active {
                 display: flex;
             }
-
-            .menu-icon {
+            .menu-btn {
                 display: block;
             }
         }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 100px 20px;
-            background: linear-gradient(135deg, #2196f3, #e91e63);
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            font-size: 18px;
-        }
-
-        /* Content Section */
-        .container {
-            padding: 50px 20px;
-            max-width: 1000px;
-            margin: auto;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        h2 {
-            margin-bottom: 20px;
-        }
-
         /* Rocket Animation */
         .rocket {
             position: absolute;
-            width: 50px;
-            height: 100px;
-            bottom: -100px;
-            animation: launch 5s linear infinite;
+            width: 100px;
+            animation: flyUp 5s linear infinite;
         }
-
-        .rocket1 {
-            left: 10%;
-            animation-delay: 1s;
+        .rocket1 { left: 5%; animation-delay: 1s; }
+        .rocket2 { right: 5%; animation-delay: 2s; }
+        @keyframes flyUp {
+            0% { bottom: -150px; opacity: 1; }
+            100% { bottom: 100vh; opacity: 0; }
         }
-
-        .rocket2 {
-            right: 10%;
-            animation-delay: 2s;
-        }
-
+        /* Smoke Trails */
         .smoke {
             position: absolute;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: white;
-            animation: smoke 3s linear infinite;
+            width: 3px;
+            height: 200px;
+            background: white;
+            opacity: 0.5;
+            animation: smokeRise 5s linear infinite;
         }
-
-        @keyframes launch {
-            0% { bottom: -100px; }
-            100% { bottom: 100%; }
+        .smoke1 { left: 6%; animation-delay: 1s; }
+        .smoke2 { right: 6%; animation-delay: 2s; }
+        @keyframes smokeRise {
+            0% { bottom: -100px; opacity: 1; }
+            100% { bottom: 100vh; opacity: 0; }
         }
-
-        @keyframes smoke {
-            0% { opacity: 1; transform: scale(1); }
-            100% { opacity: 0; transform: scale(5); }
+        /* Sections */
+        .section {
+            padding: 100px 20px;
+            text-align: center;
+        }
+        .products {
+            display: flex;
+            overflow-x: scroll;
+            gap: 20px;
+            padding: 20px;
+            white-space: nowrap;
+        }
+        .product {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            width: 250px;
+            border-radius: 10px;
+        }
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation -->
+    <!-- Navigation Bar -->
     <div class="navbar">
-        <div class="logo">Sri Datta Electronics</div>
-        <div class="menu-icon" onclick="toggleMenu()">☰</div>
-        <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
+        <h1>Sri Datta Electronics</h1>
+        <div class="menu-btn">☰</div>
+        <div class="menu">
+            <a href="#about">About</a>
+            <a href="#products">Products</a>
+            <a href="#contact">Contact</a>
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <div class="hero">
-        <h1>Welcome to Sri Datta Electronics</h1>
-        <p>Innovating the Future of Electronics</p>
-    </div>
+    <!-- Rocket Animations -->
+    <img src="https://drive.google.com/uc?export=view&id=1TW1j-A9eJmh-_jXvU7XU6ijP8Z5BVsUc" class="rocket rocket1">
+    <img src="https://drive.google.com/uc?export=view&id=1TW1j-A9eJmh-_jXvU7XU6ijP8Z5BVsUc" class="rocket rocket2">
+    <div class="smoke smoke1"></div>
+    <div class="smoke smoke2"></div>
 
-    <!-- Content Section -->
-    <div class="container">
+    <!-- About Section -->
+    <section id="about" class="section">
         <h2>About Us</h2>
-        <p>SRI DATTA ELECTRONICS PRIVATE LIMITED (CIN: U31909TG2021PTC152171) is a Private company incorporated on 10 Dec 2021.</p>
-        <p>It is classified as a Non-government company and is registered at ROC Hyderabad. Its authorized share capital is Rs. 10,00,000.00 and paid-up capital is Rs. 1,80,000.00.</p>
-        <p>The company is involved in the **manufacture of electrical equipment** as per **NIC code 3190**.</p>
-        <p><strong>Directors:</strong> LAXMI NARASIMHA SASTRY HARI, SWARNA LATHA KONDRU, and SIRI PARVATHI HARI.</p>
-        <p>Email: <a href="mailto:hlnsastry@sridattaelectronics.com">hlnsastry@sridattaelectronics.com</a></p>
-        <p>Address: PLOT NO. 5/1 & 88, Flat No. 201, Chaitanya Chamber, Chaitanyapuri, Hyderabad, Telangana, India - 500060.</p>
-    </div>
+        <p>We are Sri Datta Electronics Pvt Ltd, providing high-tech solutions in defense, telemetry tracking, and electronics.</p>
+    </section>
 
-    <!-- Rocket Animation -->
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Rocket_clipart.svg" class="rocket rocket1">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Rocket_clipart.svg" class="rocket rocket2">
+    <!-- Products Section -->
+    <section id="products" class="section">
+        <h2>Our Products</h2>
+        <div class="products">
+            <div class="product">
+                <h3>Telemetry System</h3>
+                <p>Dual Channel Receiver with high-speed data tracking.</p>
+            </div>
+            <div class="product">
+                <h3>Drone-Based Tracking</h3>
+                <p>Advanced drone telemetry with LS-28 & SDR support.</p>
+            </div>
+            <div class="product">
+                <h3>SDR Systems</h3>
+                <p>IP Mesh MANET SDR with encrypted transmissions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2>Contact Us</h2>
+        <p>Email: <a href="mailto:sales@sridattaelectronics.com">sales@sridattaelectronics.com</a></p>
+        <p>Phone: 040-35868174 | Mobile: +91-9492430198</p>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2025 Sri Datta Electronics. All Rights Reserved.</p>
+    </div>
 
     <script>
-        function toggleMenu() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        }
+        // Mobile Navbar Animation
+        const menuBtn = document.querySelector('.menu-btn');
+        const menu = document.querySelector('.menu');
 
-        // Smoke Animation
-        function createSmoke(color, left) {
-            let smoke = document.createElement("div");
-            smoke.className = "smoke";
-            smoke.style.backgroundColor = color;
-            smoke.style.left = left + "%";
-            smoke.style.bottom = "0px";
-            document.body.appendChild(smoke);
-
-            setTimeout(() => {
-                document.body.removeChild(smoke);
-            }, 3000);
-        }
-
-        setInterval(() => {
-            createSmoke("orange", 12);
-            createSmoke("white", 15);
-            createSmoke("green", 18);
-            createSmoke("orange", 82);
-            createSmoke("white", 85);
-            createSmoke("green", 88);
-        }, 500);
+        menuBtn.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
     </script>
 
 </body>
